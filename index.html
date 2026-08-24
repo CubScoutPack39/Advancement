@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cub Scout Advancement Tracker</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="theme-color" content="#17365D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Scout Tracker">
+
+<style>
+:root{--navy:#17365D;--line:#d7dde3;--green:#dff3e7;--red:#f8dfe1;--gray:#f2f4f6}*{box-sizing:border-box}body{margin:0;background:#f5f7f9;color:#1e2933;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:var(--navy);color:#fff;padding:14px 18px;position:sticky;top:0;z-index:20}header .row{max-width:1800px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}h1{font-size:21px;margin:0}.sub{opacity:.8;font-size:12px}.tools{display:flex;gap:7px;flex-wrap:wrap}.tools button,.actions button{border:1px solid #cbd3da;border-radius:8px;padding:8px 10px;background:#fff;color:#17365D;font-weight:700;cursor:pointer}.wrap{max-width:1800px;margin:auto;padding:16px}.meta{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}.meta label{display:block;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-size:10px;font-weight:800;text-transform:uppercase;color:#65717d}.meta input{display:block;width:100%;border:0;outline:0;font-size:15px;font-weight:700;margin-top:3px}.tabs{display:flex;gap:7px;overflow:auto;padding:14px 0 10px}.tab{border:0;border-radius:9px;padding:9px 12px;font-weight:850;cursor:pointer;white-space:nowrap}.tab.active{outline:3px solid #17365D;outline-offset:2px}.rankbox{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(23,54,93,.1);margin-bottom:12px}.band{padding:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.band h2{margin:0;font-size:25px}.band p{margin:2px 0 0;font-size:12px;opacity:.9}.actions{display:flex;gap:7px}.legend{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line);font-size:12px;font-weight:700}.legend span{display:flex;align-items:center;gap:6px}.sw{width:14px;height:14px;border-radius:4px;border:1px solid #bbb}.g0{background:var(--gray)}.g1{background:var(--green)}.g2{background:var(--red)}.stats{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 11px;min-width:135px}.stat b{display:block;font-size:18px}.stat small{font-size:10px;text-transform:uppercase;color:#67727c;font-weight:800}.tablebox{background:#fff;border-radius:12px;overflow:auto;max-height:calc(100vh - 290px);box-shadow:0 6px 20px rgba(23,54,93,.1)}table{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%}th,td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px;text-align:center}thead th{position:sticky;top:0;background:#eef2f5;z-index:7}thead th:first-child,tbody th{position:sticky;left:0;z-index:6;background:#fff;text-align:left;min-width:230px;max-width:230px}.section th,.section td{background:#edf2f6!important;text-transform:uppercase;font-size:10px;letter-spacing:.08em;color:#5b6670}.name{width:122px;border:1px solid #c9d0d7;border-radius:7px;padding:5px;text-align:center;font-weight:700}.x{border:0;background:transparent;color:#a22b32;font-size:16px;cursor:pointer}.status{width:122px;min-height:40px;border:1px solid #cbd3da;border-radius:8px;font-size:10px;font-weight:850;cursor:pointer;padding:4px}.s0{background:var(--gray);color:#69737d}.s1{background:var(--green);color:#17613b;border-color:#84c59f}.s2{background:var(--red);color:#92232a;border-color:#d58b91}.adv{font-weight:750;font-size:12px}.type{display:block;font-size:9px;color:#7d8790;margin-top:2px}.summary td{font-size:10px;font-weight:800;line-height:1.4}.ready{color:#17613b}.foot{font-size:10px;color:#68737d;line-height:1.5;margin:10px 3px 28px}@media(max-width:800px){.meta{grid-template-columns:1fr}.wrap{padding:10px}.tablebox{max-height:none}}@media print{header,.tabs,.actions,.foot,.x{display:none!important}.wrap{padding:0}.tablebox{max-height:none;overflow:visible;box-shadow:none}th,td{font-size:8px;padding:3px}.status{width:100%;min-height:25px;font-size:7px}}
+</style>
+<style>
+.install-note{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;background:#fff;border:1px solid #cfd7df;border-radius:12px;box-shadow:0 12px 40px rgba(23,54,93,.22);padding:13px 14px;display:none;max-width:620px;margin:auto}
+.install-note.show{display:block}
+.install-note b{display:block;margin-bottom:4px;color:#17365D}
+.install-note p{margin:0 0 9px;font-size:12px;line-height:1.45;color:#4b5966}
+.install-note .row{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap}
+.install-note button{border:1px solid #cbd3da;background:#fff;color:#17365D;border-radius:8px;padding:7px 9px;font-weight:700}
+.install-note button.primary{background:#17365D;color:#fff;border-color:#17365D}
+@media print{#installApp,.install-note{display:none!important}}
+</style>
+</head><body>
+<header><div class="row"><div><h1>Cub Scout Advancement Tracker</h1><div class="sub">Local tracker • saves automatically in this browser</div></div><div class="tools"><button id="installApp">Install App</button><button id="backup">Backup Data</button><button id="restore">Restore Data</button><button id="csv">Export Rank CSV</button><button onclick="print()">Print</button></div></div></header>
+<main class="wrap"><section class="meta"><label>Pack / Unit<input id="pack" placeholder="Pack 123"></label><label>Program Year<input id="year" value="2026–2027"></label><label>Advancement Chair<input id="chair" placeholder="Name"></label></section><nav id="tabs" class="tabs"></nav><section id="view"></section><p class="foot">Current Cub Scout ranks: Lion, Tiger, Wolf, Bear, Webelos, and Arrow of Light. Rank readiness is calculated as six required Adventures plus any two elective Adventures. Special electives are included separately. Use Scoutbook/official records as the authoritative advancement record.</p></main><input type="file" id="file" accept=".json" hidden>
+<script>
+const RANKS={"Lion": {"grade": "Kindergarten", "color": "#F2C84B", "text": "#17365D", "required": ["Bobcat Adventure", "Fun on the Run", "Lion’s Roar", "Lion’s Pride", "King of the Jungle", "Mountain Lion"], "elective": ["Build It Up, Knock It Down", "Champions for Nature Lion", "Count On Me", "Everyday Tech", "Gizmos and Gadgets", "Go Fish", "I’ll Do It Myself", "Let’s Camp Lion", "On a Roll", "On Your Mark", "Pick My Path", "Race Time Lion", "Ready, Set, Grow", "Time to Swim"], "special": ["Archery Lion", "Slingshot"]}, "Tiger": {"grade": "1st Grade", "color": "#F28C28", "text": "#17365D", "required": ["Bobcat Adventure", "Tiger Bites", "Tiger’s Roar", "Tiger Circles", "Team Tiger", "Tigers in the Wild"], "elective": ["Champions for Nature Tiger", "Curiosity, Intrigue, and Magical Mysteries", "Designed by Tiger", "Fish On", "Floats and Boats", "Good Knights", "Let’s Camp Tiger", "Race Time Tiger", "Rolling Tigers", "Safe and Smart", "Sky is the Limit", "Stories in Shapes", "Summertime Fun Tiger", "Tech All Around", "Tiger Tag", "Tiger-iffic!", "Tigers in the Water"], "special": ["Archery Tiger", "Slingshot", "BB Guns"]}, "Wolf": {"grade": "2nd Grade", "color": "#C93A3A", "text": "#FFFFFF", "required": ["Bobcat Adventure", "Running With the Pack", "Safety in Numbers", "Footsteps", "Council Fire", "Paws on the Path"], "elective": ["A Wolf Goes Fishing", "Adventures in Coins", "Air of the Wolf", "Champions for Nature Wolf", "Code of the Wolf", "Computing Wolves", "Cubs Who Care", "Digging in the Past", "Finding Your Way", "Germs Alive!", "Let’s Camp Wolf", "Paws for Water", "Paws of Skill", "Pedal With the Pack", "Race Time Wolf", "Spirit of the Water", "Summertime Fun Wolf"], "special": ["Archery Wolf", "Slingshot", "BB Guns"]}, "Bear": {"grade": "3rd Grade", "color": "#7FC8E8", "text": "#17365D", "required": ["Bobcat Adventure", "Bear Strong", "Standing Tall", "Bear Habitat", "Paws for Action", "Fellowship"], "elective": ["A Bear Goes Fishing", "Balancing Bears", "Baloo the Builder", "Bears Afloat", "Bears on Bikes", "Champions for Nature Bear", "Chef Tech", "Critter Care", "Forensics", "Let’s Camp Bear", "Marble Madness", "Race Time Bear", "Roaring Laughter", "Salmon Run", "Summertime Fun Bear", "Super Science", "Whittling"], "special": ["Archery Bear", "Slingshot", "BB Guns"]}, "Webelos": {"grade": "4th Grade", "color": "#4E7C45", "text": "#FFFFFF", "required": ["Bobcat Adventure", "Stronger, Faster, Higher", "My Safety", "My Family", "My Community", "Webelos Walkabout"], "elective": ["Aquanaut", "Art Explosion", "Aware and Care", "Build It", "Catch the Big One", "Champions for Nature Webelos", "Chef’s Knife", "Earth Rocks", "Let’s Camp Webelos", "Math on the Trail", "Modular Design", "Paddle Onward", "Pedal Away", "Race Time Webelos", "Summertime Fun Webelos", "Tech on the Trail", "Yo-yo"], "special": ["Archery Webelos", "Slingshot", "BB Guns"]}, "Arrow of Light": {"grade": "5th Grade", "color": "#6B7A3D", "text": "#FFFFFF", "required": ["Bobcat Adventure", "Personal Fitness", "First Aid", "Duty to God", "Citizenship", "Outdoor Adventurer"], "elective": ["Champions for Nature AOL", "Cycling", "Engineer", "Estimations", "Fishing", "High Tech Outdoors", "Into the Wild", "Into the Woods", "Knife Safety", "Paddle Craft", "Race Time AOL", "Summertime Fun AOL", "Swimming"], "special": ["Archery Arrow of Light", "Slingshot", "BB Guns"]}},KEY="cubScoutAdvancementTracker_v2",ST=[["s0","Uncompleted"],["s1","Completed"],["s2","Completed & Ordered"]];
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const fresh=()=>({pack:"",year:"2026–2027",chair:"",active:"Lion",ranks:Object.fromEntries(Object.keys(RANKS).map(r=>[r,{scouts:Array.from({length:8},(_,i)=>({id:uid(),name:"Scout "+(i+1)})),status:{}}]))});
+function load(){try{let x=JSON.parse(localStorage.getItem(KEY));if(!x)return fresh();let f=fresh();f.pack=x.pack||"";f.year=x.year||"2026–2027";f.chair=x.chair||"";f.active=RANKS[x.active]?x.active:"Lion";for(const r of Object.keys(RANKS))if(x.ranks&&x.ranks[r])f.ranks[r]=x.ranks[r];return f}catch(e){return fresh()}}
+let S=load();const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));const k=(id,a)=>id+"||"+a;
+function save(){S.pack=pack.value;S.year=year.value;S.chair=chair.value;localStorage.setItem(KEY,JSON.stringify(S))}
+function get(r,id,a){return Number(S.ranks[r].status[k(id,a)]||0)}function set(r,id,a,n){if(n)S.ranks[r].status[k(id,a)]=n;else delete S.ranks[r].status[k(id,a)];save()}
+function adventures(r){let x=RANKS[r];return [...x.required.map(a=>[a,"Required"]),...x.elective.map(a=>[a,"Elective"]),...x.special.map(a=>[a,"Special Elective"])]}
+function sum(r,s){let x=RANKS[r],req=x.required.filter(a=>get(r,s.id,a)>0).length,el=[...x.elective,...x.special].filter(a=>get(r,s.id,a)>0).length,g=adventures(r).filter(a=>get(r,s.id,a[0])===1).length,o=adventures(r).filter(a=>get(r,s.id,a[0])===2).length;return{req,el,g,o,ready:req>=6&&el>=2}}
+function tabs(){tabsEl.innerHTML="";for(const [n,r] of Object.entries(RANKS)){let b=document.createElement("button");b.className="tab"+(S.active===n?" active":"");b.textContent=n;b.style.background=r.color;b.style.color=r.text;b.onclick=()=>{S.active=n;save();tabs();render()};tabsEl.appendChild(b)}}
+function section(label,n){return `<tr class="section"><th>${label}</th><td colspan="${n}"></td></tr>`}
+function render(){let r=S.active,x=RANKS[r],d=S.ranks[r],sc=d.scouts,head="<th>Adventure</th>",rows="",summ="<th>Rank Progress</th>";
+for(const s of sc)head+=`<th><input class="name" data-name="${esc(s.id)}" value="${esc(s.name)}"><button class="x" data-x="${esc(s.id)}">×</button></th>`;
+for(const [label,list,type] of [["Required Adventures",x.required,"Required"],["Elective Adventures",x.elective,"Elective"],["Special Elective Adventures",x.special,"Special Elective"]]){rows+=section(label,sc.length);for(const a of list){rows+=`<tr><th><span class="adv">${esc(a)}</span><span class="type">${type}</span></th>`;for(const s of sc){let n=get(r,s.id,a);rows+=`<td><button class="status ${ST[n][0]}" data-id="${esc(s.id)}" data-a="${esc(a)}" data-n="${n}">${ST[n][1]}</button></td>`}rows+="</tr>"}}
+let green=0,red=0,ready=0;for(const s of sc){let z=sum(r,s);green+=z.g;red+=z.o;if(z.ready)ready++;summ+=`<td>${z.ready?'<span class="ready">RANK READY</span>':'In progress'}<br>Req ${z.req}/6 · Elec ${z.el}/2<br>Green ${z.g} · Red ${z.o}</td>`}
+view.innerHTML=`<section class="rankbox"><div class="band" style="background:${x.color};color:${x.text}"><div><h2>${r}</h2><p>${x.grade} • 6 required + any 2 elective Adventures</p></div><div class="actions"><button id="add">+ Add Scout</button></div></div><div class="legend"><span><i class="sw g0"></i>Uncompleted / no change</span><span><i class="sw g1"></i>Completed</span><span><i class="sw g2"></i>Completed & ordered</span></div></section><div class="stats"><div class="stat"><b>${sc.length}</b><small>Scouts</small></div><div class="stat"><b>${ready}</b><small>Rank ready</small></div><div class="stat"><b>${green}</b><small>Completed / not ordered</small></div><div class="stat"><b>${red}</b><small>Completed & ordered</small></div></div><div class="tablebox"><table><thead><tr>${head}</tr></thead><tbody>${rows}<tr class="summary">${summ}</tr></tbody></table></div>`;
+document.querySelectorAll(".status").forEach(b=>b.onclick=()=>{set(r,b.dataset.id,b.dataset.a,(Number(b.dataset.n)+1)%3);render()});
+document.querySelectorAll(".name").forEach(i=>i.oninput=()=>{let s=d.scouts.find(q=>q.id===i.dataset.name);if(s)s.name=i.value;save()});
+document.querySelectorAll(".x").forEach(b=>b.onclick=()=>{if(d.scouts.length<=1)return alert("Keep at least one Scout.");let s=d.scouts.find(q=>q.id===b.dataset.x);if(!confirm("Remove "+(s?.name||"this Scout")+"?"))return;d.scouts=d.scouts.filter(q=>q.id!==b.dataset.x);for(const key of Object.keys(d.status))if(key.startsWith(b.dataset.x+"||"))delete d.status[key];save();render()});
+add.onclick=()=>{d.scouts.push({id:uid(),name:"Scout "+(d.scouts.length+1)});save();render()}}
+function backup(){save();let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:"application/json"}));a.href=u;a.download=(S.pack||"Cub_Scout").replace(/[^a-z0-9_-]+/gi,"_")+"_Advancement_Backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}
+function csv(){let r=S.active,sc=S.ranks[r].scouts,x=RANKS[r],rows=[["Type","Adventure",...sc.map(s=>s.name)]];for(const [t,l] of [["Required",x.required],["Elective",x.elective],["Special Elective",x.special]])for(const a of l)rows.push([t,a,...sc.map(s=>ST[get(r,s.id,a)][1])]);let c=rows.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(",")).join("\r\n"),a=document.createElement("a"),u=URL.createObjectURL(new Blob([c],{type:"text/csv"}));a.href=u;a.download=r.replaceAll(" ","_")+"_Advancement.csv";a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}
+pack.value=S.pack;year.value=S.year;chair.value=S.chair;[pack,year,chair].forEach(i=>i.oninput=save);const tabsEl=document.getElementById("tabs");backup.onclick=backup;csv.onclick=csv;restore.onclick=()=>file.click();file.onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!x.ranks)throw 0;localStorage.setItem(KEY,JSON.stringify(x));S=load();pack.value=S.pack;year.value=S.year;chair.value=S.chair;tabs();render()}catch(e){alert("Invalid backup file.")}};rd.readAsText(f);file.value=""};tabs();render();
+</script>
+<div id="installNote" class="install-note" role="dialog" aria-live="polite">
+  <b id="installTitle">Install Scout Tracker</b>
+  <p id="installText">Install this tracker for full-screen Home Screen access.</p>
+  <div class="row">
+    <button id="installDismiss">Not now</button>
+    <button id="installAction" class="primary">Install</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  let deferredPrompt = null;
+  const btn = document.getElementById("installApp");
+  const note = document.getElementById("installNote");
+  const action = document.getElementById("installAction");
+  const dismiss = document.getElementById("installDismiss");
+  const title = document.getElementById("installTitle");
+  const text = document.getElementById("installText");
+
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+  function showIOSInstructions(){
+    title.textContent = "Install on iPhone or iPad";
+    text.textContent = "In Safari, tap Share, choose Add to Home Screen, turn on Open as Web App, then tap Add.";
+    action.textContent = "Got it";
+    action.onclick = () => note.classList.remove("show");
+    note.classList.add("show");
+  }
+
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!isStandalone) btn.style.display = "";
+  });
+
+  btn.addEventListener("click", async () => {
+    if (isStandalone) {
+      alert("Scout Tracker is already running as an installed app.");
+      return;
+    }
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      return;
+    }
+    if (isIOS) {
+      showIOSInstructions();
+    } else {
+      title.textContent = "Install Scout Tracker";
+      text.textContent = "Use your browser menu and choose Install App, Add to Dock, or Create Shortcut.";
+      action.textContent = "Got it";
+      action.onclick = () => note.classList.remove("show");
+      note.classList.add("show");
+    }
+  });
+
+  dismiss.addEventListener("click", () => note.classList.remove("show"));
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    });
+  }
+
+  // On iOS, show a one-time install tip when opened in Safari and not installed.
+  if (isIOS && !isStandalone && !sessionStorage.getItem("installTipShown")) {
+    sessionStorage.setItem("installTipShown", "1");
+    setTimeout(showIOSInstructions, 1200);
+  }
+
+  window.addEventListener("appinstalled", () => {
+    note.classList.remove("show");
+    btn.textContent = "Installed";
+  });
+})();
+</script>
+</body></html>
