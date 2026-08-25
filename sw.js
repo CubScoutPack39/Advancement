@@ -1,4 +1,4 @@
-const CACHE = "cub-scout-advancement-v1";
+const CACHE = "cub-scout-advancement-v2";
 const ASSETS = [
   "./",
   "./index.html",
