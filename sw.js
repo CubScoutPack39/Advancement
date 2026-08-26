@@ -1,8 +1,8 @@
-const CACHE = "cub-scout-advancement-v3";
+const CACHE = "cub-scout-advancement-v4";
 const ASSETS = [
   "./index.html",
   "./manifest.webmanifest",
-  "./next-award.js",
+  "./next-award.js?v=4",
   "./icons/icon-180.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
@@ -26,7 +26,7 @@ self.addEventListener("activate", event => {
 });
 
 function injectEnhancements(html){
-  if (html.includes('src="./next-award.js"') || html.includes('src="next-award.js"')) return html;
+  if (html.includes('next-award.js')) return html;
   return html.replace("</body>", '<script src="./next-award.js"></script></body>');
 }
 
