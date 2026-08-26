@@ -1,0 +1,53 @@
+name: Patch Next Award loader
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-next-award.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Patch index and service worker
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          loader = '<script src="./next-award.js?v=4"></script>'
+          if 'next-award.js' not in html:
+              html = html.replace('</body>', loader + '\n</body>', 1)
+              index.write_text(html, encoding='utf-8')
+
+          sw = Path('sw.js')
+          text = sw.read_text(encoding='utf-8')
+          text = text.replace('cub-scout-advancement-v3', 'cub-scout-advancement-v4')
+          text = text.replace('"./next-award.js",', '"./next-award.js?v=4",')
+          text = text.replace("if (html.includes('src=\"./next-award.js\"') || html.includes('src=\"next-award.js\"')) return html;", "if (html.includes('next-award.js')) return html;")
+          sw.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit patch
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No patch needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html sw.js
+          git commit -m "Load Next Award countdown directly"
+          git push origin main
